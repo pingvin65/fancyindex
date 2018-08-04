@@ -1,0 +1,8 @@
+<!--#include virtual="/includeheader4/head.shtml" -->
+<div class="page-header" id="indexof">
+    <h2>Index of
+        <span>
+            <!--#echo var="REQUEST_URI" -->
+        </span>
+    </h2>
+</div>

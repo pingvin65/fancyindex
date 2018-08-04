@@ -12,6 +12,11 @@ sudo mv includeheader4/ /var/www/
 #### creating a folder
 sudo mkdir /etc/apache2/include
 #### move the file to /etc/apache2/include
-sudo mv fancyindex.conf /etc/apache2/include
+sudo mv fancyindex.conf /etc/apache2/include/
 #### add a line to the bottom of the file 000-default.conf
-
+Include include/fancyindex.conf
+#### After installation of the Apache server, enable Apache Module mod_include
+sudo a2enmod include 
+#### Apache server needs to be restarted
+sudo  systemctl restart apache2
+#### It should work

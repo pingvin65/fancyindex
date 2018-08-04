@@ -1,11 +1,12 @@
 # fancyindex
-## one way of installation
+## one way of installation on Debian
 #### clone git
- git clone https://github.com/pingvin65/fancyindex.git
+git clone https://github.com/pingvin65/fancyindex.git
 #### change directory
 cd fancyindex/
 #### move the directory to the required location
-#### if necessary use sudo
 mv includeheader4/ /var/www/
-##### or
+##### if necessary use sudo
 sudo mv includeheader4/ /var/www/
+###
+

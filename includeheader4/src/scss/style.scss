@@ -1,0 +1,371 @@
+$nav-bg : #3575d3;//#0268a2;
+$futer-bg: #3575d3;// #0268a2;
+$body-bg: #eaf1fa;
+$text-color: #11294d;
+$linkcolor : lighten($color: #0268a2, $amount: 60%);
+$min-width: 320px;
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+    min-width: $min-width;
+  }
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    min-width: $min-width;
+    background: $body-bg;
+    color: $text-color;
+}
+
+  .wrapper {
+    min-height: 100%;
+  
+    /* Equal to height of footer */
+    /* But also accounting for potential margin-bottom of last child */
+    margin-bottom: -50px;
+    .content{
+        .body-content{
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+       
+      }
+
+  }
+  
+  .footer,
+  .push {
+    height: 50px;
+  }
+  .footer{
+      color: lighten($color: $futer-bg, $amount: 40%);
+   
+    overflow: hidden;
+      .content{
+      background-color: $futer-bg;
+      height: 50px;
+      padding-top: 18px;
+      padding-left: 10px;
+      padding-right: 10px;
+      }
+  }
+
+#navbar{
+   background: $nav-bg;
+   overflow: hidden;
+   border-bottom: darken($nav-bg ,  15%) solid 1px;
+   a{
+    text-decoration: none;
+    color: $linkcolor;
+    //color: #fff;
+   }
+   a:hover{
+       color: #fff;
+   }
+    .logo, .toggle{
+        display: inline-block;
+        font-size: 2.5ex;
+        color: #fff;
+        overflow:hidden;
+        height: 45px;
+        line-height: 45px;
+        a{
+            color:#fff;
+        }
+    }
+    .toggle{
+        float: right;
+        margin-right: 20px;
+        span{
+            font-size: 2.5ex;
+            cursor: pointer;
+        }
+    }
+    .logo-img{
+        //float: left;
+        position: relative;
+        width: auto;
+        height: 32px;
+        //margin: 10px 15px 15px 10px;
+        vertical-align: middle;
+        padding-right: 10px;
+    }
+    /* Navigation */
+    .nav{
+        //float: left;
+        display: inline-block;
+        margin: 0;
+        overflow:hidden;
+        text-align: center;
+        ul{
+            margin: 0;
+            padding: 0;
+            li{
+                display: inline-block;
+                list-style-type: none;
+                //background-color: red;
+                   
+                }
+               
+            }
+            li.parent{
+                //background-color: beige;
+                .chaild{
+                   
+                    li{
+                        display: initial;
+                       
+                    }
+                }
+                        
+            }
+            
+           
+            li.parent ul.child{
+                //background-color:rgb(106, 41, 167);
+                //display: none;
+                position: absolute;
+                background-color: lighten($nav-bg, 10%);//#0268a2;
+                padding: 5px 10px;
+                li{
+                    display: block;
+                    text-align: left;
+                    a{
+                        text-decoration: none;
+                        color: $linkcolor;
+                    }
+                }
+            }
+    
+        
+    }
+    .nav > ul > li > a{
+        color: rgb(227, 230, 245);
+        display: block;
+        line-height: 2em;
+        padding: 0.5em 1em;
+        text-decoration: none;
+    }
+    .test{
+        display: none;
+    }
+    li.parent> a.linkul::after{
+        content: '\25BC';
+        font-size: 10px;
+    }  
+}
+
+.content{
+   
+    margin: 0 auto;
+}
+
+.child{
+    display: none;
+}
+.see{
+    display: block;
+}
+
+.toggle span{
+    display: none;  
+}
+
+
+.toggleul{
+    display: block !important;
+    ul{
+        margin-top: 0;
+        margin-bottom: -5px; 
+        margin-left: 0; 
+        padding-left: 0;
+        padding-bottom: 5px;
+        background-color: lighten($color: #0268a2, $amount: 10%);      
+    }
+    li{
+        list-style-type: none;
+        margin: 5px 0;
+        padding-left: 15px;
+
+    }
+   
+}
+
+
+// table
+div.body-content{
+    table{
+        border-collapse: collapse;
+        a{
+            color: darken($color: $body-bg, $amount: 80%);
+        }
+        a:visited {
+            color: darken($color: $body-bg, $amount: 60%);;
+        }
+        th, td{
+            padding: 1px 3px;
+            border-width: 0;
+            img{
+                height: 22px;
+                widows: auto;
+            }
+            a{
+                text-decoration: none;
+            }
+        }
+        hr{
+            display: none;
+            color: darken($color: $body-bg, $amount: 1%);  //#0095eb;
+            margin: 0;
+        }
+
+        tr:first-child {
+            margin-bottom: 0;
+            background-color: darken($color: $body-bg, $amount: 10%);
+            //border-bottom:  darken($color: $body-bg, $amount: 40%) solid 1px;
+            a{
+                color: darken($color: $body-bg, $amount: 80%);
+            }            
+        }
+        tr:nth-child(even){
+            background-color: darken($color: $body-bg, $amount: 5%);
+        }
+        tr:nth-child(2){
+            height: 2px;
+            background-color: $body-bg;
+        }
+        /*
+        tr:first-child {
+            th{
+                border-bottom: #0268a2 solid 1px;
+            }
+            
+        }
+        tr:last-child {
+            border-bottom: #0268a2 solid 1px;
+        }*/
+    }
+    padding-bottom: 15px;
+}
+#indexof{
+    background-color: darken($color: $body-bg, $amount: 3%);
+    .homeimg{
+        vertical-align: middle;
+    }
+    a{
+        text-decoration: none;
+        color: darken($color: $body-bg, $amount: 80%);
+    }
+}
+
+.addmargin{
+    padding: 3px 5px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+
+
+
+@media only screen and (max-width: 420px){
+    div.body-content{
+        table{
+            table-layout: fixed;
+            width: 99%;
+            //white-space: nowrap;
+            td, th {
+                //white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                vertical-align: middle;            
+              }
+            
+              
+              
+            tr{
+                td:nth-child(3), th:nth-child(3),  td:nth-child(5), th:nth-child(5){
+                    display: none;
+                }
+                td:nth-child(1), th:nth-child(1){
+                    width: 10%;                
+                }  
+                td:nth-child(2), th:nth-child(2){
+                    width: 65%;
+                }
+                td:nth-child(4), th:nth-child(4){
+                    width: 25%;
+                }
+            }
+        }
+    }
+
+}
+
+@media only screen and (min-width: 421px) and (max-width: 600px){
+    div.body-content{
+        table{
+            table-layout: fixed;
+            width: 99%;
+            //white-space: nowrap;
+            td, th {
+               // white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                vertical-align: middle;                
+              }
+            
+              
+              
+            tr{
+                td:nth-child(5), th:nth-child(5){
+                    display: none;
+                }
+                td:nth-child(1), th:nth-child(1){
+                    width: 5%;                
+                }
+                td:nth-child(2), th:nth-child(2){
+                    width: 50%;                
+                }  
+                td:nth-child(3), th:nth-child(3){
+                    width: 30%;
+                }
+                td:nth-child(4), th:nth-child(4){
+                    width: 15%;
+                }
+            }
+        }
+    }
+
+}
+
+@media only screen  and (min-width: 601px) and (max-width: 1020px){
+    div.body-content{
+        table{
+            min-width: 70%;
+        }
+    }
+    .content{
+        width: 100%;
+
+    }
+    #navbar{
+        .logo{
+            img{
+                padding-left: 10px;
+            }
+        }
+    }
+}
+@media only screen and (min-width: 1021px){
+    .content{
+        width: 1020px;
+    }
+    div.body-content{
+        table{
+            min-width: 750px;
+        }
+    }
+}

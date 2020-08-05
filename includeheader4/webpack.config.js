@@ -8,13 +8,12 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin');
 
 ScssExtract = MiniCssExtractPlugin;
-//const Purecss = MiniCssExtractPlugin;
-//const Styles= MiniCssExtractPlugin;
+
 
 module.exports = {
   entry: {
     app: './src/js/index.js',
- 
+
   },
   devtool: 'source-map',
   plugins: [
@@ -32,45 +31,44 @@ module.exports = {
       filename: "css/[name].bundle.css",
       chunkFilename: "css/[name].bundle.css"
     }),
-   
 
-    new CopyWebpackPlugin([{
-      from: path.resolve(__dirname, 'src/HEADER.shtml'),
-      to: path.resolve(__dirname, 'dist/HEADER.shtml'),
-      toType: 'file'
-    },
-    {
-      from: path.resolve(__dirname, 'src/head.shtml'),
-      to: path.resolve(__dirname, 'dist/head.shtml'),
-      toType: 'file'
-    },
-    {
-      from: path.resolve(__dirname, 'src/FOOTER.shtml'),
-      to: path.resolve(__dirname, 'dist/FOOTER.shtml'),
-      toType: 'file'
-    },
-    {
-      from: path.resolve(__dirname, 'src/404.shtml'),
-      to: path.resolve(__dirname, 'dist/404.shtml'),
-      toType: 'file'
-    },
-    {
-      from: path.resolve(__dirname, 'src/500.shtml'),
-      to: path.resolve(__dirname, 'dist/500.shtml'),
-      toType: 'file'
-    },
-  ])
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src/HEADER.shtml'),
+          to: path.resolve(__dirname, 'dist/HEADER.shtml'),
+          toType: 'file'
+        },
+        {
+          from: path.resolve(__dirname, 'src/head.shtml'),
+          to: path.resolve(__dirname, 'dist/head.shtml'),
+          toType: 'file'
+        },
+        {
+          from: path.resolve(__dirname, 'src/FOOTER.shtml'),
+          to: path.resolve(__dirname, 'dist/FOOTER.shtml'),
+          toType: 'file'
+        },
+        {
+          from: path.resolve(__dirname, 'src/404.shtml'),
+          to: path.resolve(__dirname, 'dist/404.shtml'),
+          toType: 'file'
+        },
+        {
+          from: path.resolve(__dirname, 'src/500.shtml'),
+          to: path.resolve(__dirname, 'dist/500.shtml'),
+          toType: 'file'
+        }
+      ],
+    })
   ],
   module: {
     rules: [
       {
-        //test: /\.(sa|sc|c)ss$/,
         test: /\.scss$/,
         use: [
-          //devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-          ScssExtract.loader,          
+          ScssExtract.loader,
           'css-loader',
-          //{ loader: 'css-loader', options: { importLoaders: 1 } },
           'postcss-loader',
           'sass-loader',
         ]
@@ -85,7 +83,6 @@ module.exports = {
             }
           }
         ],
-        //exclude:path.resolve(__dirname, "node_modules") node_modules/purecss/build$
         include: path.resolve(__dirname, "node_modules/purecss/build")
       },
       {
@@ -96,9 +93,8 @@ module.exports = {
             name: 'images/[name].[ext]'
           }
         }
-          //  'file-loader'
-      ],
-      include: path.resolve(__dirname, "src/images"),
+        ],
+        include: path.resolve(__dirname, "src/images"),
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -108,27 +104,18 @@ module.exports = {
             name: 'icons/[name].[ext]'
           }
         }
-          //  'file-loader'
-      ],
-      include: path.resolve(__dirname, "src/icons"),
+        ],
+        include: path.resolve(__dirname, "src/icons"),
       },
     ]
   },
   output: {
     filename: 'js/[name].bundle.js',
     chunkFilename: 'js/[name].bundle.js',
-    //filename: 'bundle.js',
-    //chunkFilename: 'js/bundle.js',
-    //filename: 'js/[name]',
-    //chunkFilename: 'js/[name]',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/includeheader4'
 
   },
-  // optimization: {
-  //   minimizer: [new TerserPlugin()],
-  // },
-
   optimization: {
     minimizer: [
       new TerserPlugin({
@@ -137,4 +124,15 @@ module.exports = {
       }),
     ],
   },
+  devtool: 'source-map',
+  watch: true,
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    contentBasePublicPath: '/',
+    // publicPath: "/",
+    // contentBase: "./",
+    hot: true,
+    compress: true,
+    port: 4080
+  }
 };

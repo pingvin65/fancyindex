@@ -1,9 +1,0 @@
-<!--#include virtual="/includeheader4/head.shtml" -->
-<div class="container errorpage"> 
-<h2>Not Found</h2>
-<div class="alert alert-warning" role="alert">
-    
-    <p>The requested URL <b><!--#echo var="REQUEST_URI" --></b> was not found on this server.</p>
-  </div>
-</div>
-<!--#include virtual="/includeheader4/FOOTER.shtml" -->

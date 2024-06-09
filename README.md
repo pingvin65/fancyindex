@@ -122,7 +122,7 @@ sudo a2enmod include
 sudo systemctl restart apache2.service 
 ```
 
-In my case it was enough, in yours probably but not 100%
+In my case it was enough, in yours probably but not 100% sure.
 
 ### You can make your own version if you go to the includeheader4 directory
 ```cmd

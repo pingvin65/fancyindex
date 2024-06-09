@@ -5,9 +5,9 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>
-        <%= htmlWebpackPlugin.options.title %>
+        <!--#echo var="SERVER_NAME"-->
     </title>
-</head>
+<link rel="shortcut icon" href="/includeheader4/favicon16x16.png"><link href="/includeheader4/css/app.bundle.css" rel="stylesheet"></head>
 
 <body>
     <div class="wrapper">
@@ -15,9 +15,9 @@
             <div class="content">
                 <div class="logo">
                     <a href="/">
-                        <img class="logo-img" src="/images/logo.png" width="32" height="32" ALT="align box" ALIGN=CENTER>
+                        <img class="logo-img" src="/includeheader4/images/logo.png" width="32" height="32" ALT="align box" ALIGN=CENTER>
                     </a>
-                    <a href="/">localhost</a>
+                    <a href="/"><!--#echo var="SERVER_NAME"--></a>
                 </div>
                 <div class="toggle">
                     <span id="toggle">&equiv;</span>
@@ -27,14 +27,14 @@
                         <li>
                             <a href="/">home</a>
                         </li>
-                        <li>
+                        <!--li>
                             <a href="#">Link 1</a>
                         </li>
                         <li>
                             <a href="#">Link 2</a>
                         </li>
                         <li>
-                            <a href="#">Link 3 f</a>
+                            <a href="#">Link 3</a>
                         </li>
                         <li class="parent">
                             <a href="#" class="linkul" id="parentlink">Link 5 </a>
@@ -49,12 +49,15 @@
                                     <a href="#">Link 5-3</a>
                                 </li>
                             </ul>
+                        </li-->
+                        <li>
+                            <a href="/phpMyAdmin/">phpMyAdmin</a>
                         </li>
                         <li class="parent">
-                            <a href="#" class="linkul">Link 6 </a>
+                            <a href="#" class="linkul">projects</a>
                             <ul class="child">
                                 <li>
-                                    <a href="#">Link 6-1</a>
+                                    <a href="/laravel/larbp/public/">larbp</a>
                                 </li>
                                 <li>
                                     <a href="#">Link 6-2</a>
@@ -76,20 +79,4 @@
         </div>
 
         <div class="content">
-            <div class="body-content">
-            <h1>Cooler than your high school film club.</h1>
-            <p>Stay tuned...</p>
-            </div>
-            <div class="pushup"></div>
-        </div>
-    </div>
-    <div class="footer">
-        <div class="content">
-            footer
-        </div>
-
-    </div>
-
-</body>
-
-</html>
+            <div class="body-content" id="bcontent">

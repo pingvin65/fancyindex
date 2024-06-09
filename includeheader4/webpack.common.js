@@ -1,38 +1,40 @@
-const path = require('path');
-//const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require('path');
+
+
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-//const devMode = process.env.NODE_ENV !== 'production';
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
+
+const dist = 'dist'
+
 
 ScssExtract = MiniCssExtractPlugin;
 
-
 module.exports = {
+  //mode: 'development',
   entry: {
     app: './src/js/index.js',
 
   },
-  devtool: 'source-map',
+  output: {
+    path: path.resolve(__dirname, dist),
+    filename: 'bundle.js',
+  },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       title: 'Output Management',
       favicon: 'src/images/favicon16x16.png',
       filename: 'index.html',
       template: 'src/index.html'
     }),
-    //new HtmlWebpackPlugin(),
     new ScssExtract({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
       filename: "css/[name].bundle.css",
       chunkFilename: "css/[name].bundle.css"
     }),
-
-    new CopyWebpackPlugin({
+    new CopyPlugin({
       patterns: [
         {
           from: path.resolve(__dirname, 'src/HEADER.shtml'),
@@ -65,13 +67,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.s[ac]ss$/i,
         use: [
-          ScssExtract.loader,
-          'css-loader',
-          'postcss-loader',
-          'sass-loader',
-        ]
+          // Creates `style` nodes from JS strings
+          "style-loader",
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Compiles Sass to CSS
+          "sass-loader",
+        ],
       },
       {
         test: /\g.css$/,
@@ -109,12 +113,12 @@ module.exports = {
       },
     ]
   },
+
   output: {
     filename: 'js/[name].bundle.js',
     chunkFilename: 'js/[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/includeheader4'
-
+    path: path.resolve(__dirname, dist),
+    publicPath: '/includeheader4',
   },
   optimization: {
     minimizer: [
@@ -124,15 +128,5 @@ module.exports = {
       }),
     ],
   },
-  devtool: 'source-map',
-  watch: true,
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    contentBasePublicPath: '/',
-    // publicPath: "/",
-    // contentBase: "./",
-    hot: true,
-    compress: true,
-    port: 4080
-  }
+  // devtool: 'source-map',
 };

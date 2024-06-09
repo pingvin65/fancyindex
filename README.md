@@ -138,6 +138,7 @@ yarn start
 If everything is OK, the default web browser should open
 
 
+
 ### run the command to build your version of fancyindex
 
 ```cmd
